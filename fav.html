@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite View ❤️</title>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* Background Bergerak (Tetap sama biar konsisten) */
+        .bg-animated {
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Container */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        /* Spotlight Frame Effect */
+        .spotlight-frame {
+            position: relative;
+            background: #fff;
+            padding: 15px;
+            padding-bottom: 50px; /* Space bawah ala Polaroid */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
+        }
+
+        /* Animasi mengambang pelan */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(2deg); }
+        }
+
+        .handwriting {
+            font-family: 'Dancing Script', cursive;
+        }
+    </style>
+</head>
+
+<body x-data="{ loaded: false }" x-init="setTimeout(() => loaded = true, 300)">
+
+    <div class="bg-animated"></div>
+
+    <div x-show="loaded"
+         x-transition:enter="transition ease-out duration-1000"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         class="glass-panel w-full max-w-5xl rounded-3xl overflow-hidden flex flex-col md:flex-row p-6 md:p-12 gap-8 md:gap-12 items-center">
+
+        <div class="w-full md:w-1/2 flex justify-center order-1 md:order-2">
+            <div class="spotlight-frame floating w-full max-w-sm rotate-2">
+                <img src="/assets/img/together_pict.jpg" 
+                     alt="My Favorite Person" 
+                     class="w-full h-auto object-cover rounded filter brightness-105 contrast-105">
+                
+                <div class="absolute bottom-4 right-6 text-gray-400 font-mono text-xs">
+                    Our Best Moment ✨
+                </div>
+                
+                <div class="absolute -top-6 -right-6 text-6xl drop-shadow-lg animate-bounce delay-700">
+                    ❤️
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/2 text-left order-2 md:order-1 space-y-6">
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-pink-600 handwriting mb-4 leading-tight">
+                Kenapa Foto Ini?
+            </h1>
+
+            <div class="text-gray-700 space-y-4 leading-relaxed text-base md:text-lg">
+                <p>
+                    Dari banyaknya foto entah kenapaa foto inii yang palingg dhimas sukaa, momen pertama kalii kita hangout barengg. aisyaa lagi sendiri di arobi dan dhimas datangi aisyaa biar kita bisa berduaan. 
+                </p>
+                <p>
+                    <span class="font-bold text-pink-500">Bukan karena tempatnya bagus,</span>Tapi karena di foto ini, dhimass bisa liatt senyumm manissnya aisyaa. Senyum yang selaluu buat hari-harinyaa dhimas lebih bermaknaa.
+                </p>
+                <p>
+                    Setiap kali dhimass kangen dan lagii tidakk bisa ketemu aisyaaa, dhimass selalu buka foto-foto yang ada di gallery. It reminds me how lucky I am to have you in my life.
+                </p>
+                <p class="font-semibold italic text-gray-500 border-l-4 border-pink-400 pl-4 mt-4">
+                    "You are my favorite notification, my favorite thought, and my favorite view. you are everything for me aisyaa"
+                </p>
+            </div>
+
+            <div class="pt-6 flex gap-4">
+                <a href="photo.html" class="px-6 py-2 rounded-full border border-pink-400 text-pink-500 hover:bg-pink-50 transition">
+                    ← Lihat Galeri Lain
+                </a>
+                <a href="index.html" class="px-6 py-2 rounded-full bg-pink-500 text-white shadow-lg hover:bg-pink-600 transition transform hover:scale-105">
+                    Back to Home 🏠
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

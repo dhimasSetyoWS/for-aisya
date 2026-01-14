@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dear Aisyaa ❤️</title>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Background Bergerak (Sama seperti halaman depan) */
+        .bg-animated {
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efek Kertas Surat */
+        .letter-card {
+            background-color: #fffdf0; /* Warna kertas agak krem */
+            background-image: radial-gradient(#d4d4d4 1px, transparent 1px); /* Efek titik-titik halus */
+            background-size: 20px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.05);
+            transform: rotate(-1deg); /* Miring sedikit biar natural */
+            transition: transform 0.3s ease;
+        }
+        
+        .letter-card:hover {
+            transform: rotate(0deg) scale(1.01);
+        }
+
+        /* Font Tulisan Tangan untuk Header */
+        .handwriting {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Polaroid Effect untuk Foto */
+        .polaroid {
+            background: white;
+            padding: 10px;
+            padding-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: rotate(2deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body x-data="{ show: false }" x-init="setTimeout(() => show = true, 500)">
+
+    <div class="bg-animated"></div>
+
+    <div x-show="show" 
+         x-transition:enter="transition ease-out duration-1000"
+         x-transition:enter-start="opacity-0 translate-y-10"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         class="relative max-w-lg w-full">
+
+        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-32 h-8 bg-pink-200 opacity-80 rotate-1 z-10 shadow-sm" style="clip-path: polygon(2% 0, 98% 0, 100% 100%, 0% 100%);"></div>
+
+        <div class="letter-card p-8 rounded-lg relative">
+            
+            <div class="flex justify-center mb-6">
+                <div class="polaroid w-48 sm:w-56">
+                    <img src="/assets/img/IMG-20251223-WA0004.jpg" 
+                         alt="Us" 
+                         class="w-full h-auto object-cover rounded shadow-inner filter sepia-[0.2]"
+                         onerror="this.src='https://images.unsplash.com/photo-1518568814500-bf5f8ca12f6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';"> 
+                         </div>
+            </div>
+
+            <div class="text-gray-700 leading-relaxed space-y-4">
+                <h2 class="text-3xl font-bold text-pink-600 handwriting text-center mb-4">Dear My Love, Aisyaa</h2>
+                
+                <p class="text-sm sm:text-base text-justify">
+                    I just want to say <span class="font-bold text-pink-500">thank you</span> for everything that we've been going through, how much I love you and I really, really mean it. 
+                </p>
+                
+                <p class="text-sm sm:text-base text-justify">
+                    The way you smile, the way you laugh. Everything about you is something special for me. Mungkin saat ini Dhimas <i>not good enough for you</i>, it feels like I don't deserve this pretty girl. But I will do my best just for you.
+                </p>
+
+                <p class="text-sm sm:text-base text-justify">
+                    Nggak berasa kita udah jalan 2 bulan <i>as a couple</i>. I wish kita bisa menghadapi semua rintangan dan permasalahan bersama-sama dan tetap memilih untuk bersama sayang...
+                </p>
+
+                <p class="text-sm sm:text-base text-justify border-l-4 border-pink-300 pl-4 italic bg-pink-50 py-2 rounded-r-lg">
+                    "There are no words that can describe how I feel for you, you make me fall in love harder and harder every single day. <br>
+                    <span class="font-bold">I love you sayang ❤️"</span>
+                </p>
+            </div>
+
+            <div class="mt-8 flex justify-end">
+                <a href="photo.html" 
+                   class="group flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full shadow-lg transition transform hover:scale-105 hover:pr-4">
+                    <span class="font-bold">Lihat Foto Kita</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 transition-transform group-hover:translate-x-1">
+                        <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="absolute bottom-4 left-6 text-pink-200 text-4xl opacity-50">♥</div>
+            <div class="absolute top-10 right-4 text-pink-300 text-2xl opacity-50 rotate-12">♥</div>
+
+        </div>
+    </div>
+
+</body>
+</html>
